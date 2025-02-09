@@ -1,4 +1,5 @@
 /* Фон с размытой картинкой */
+/* Стили */
 body {
     font-family: 'Montserrat', sans-serif;
     background: url("https://analyzing-testing.netzsch.com/_Resources/Persistent/4/d/4/e/4d4ea9e36c3524300b40aa2ee2c37cf85ca4876d/NETZSCH_Data-Science_Big-Data-scaled-1847x1038-1600x899.webp") no-repeat center center/cover;
@@ -9,6 +10,7 @@ body {
     padding: 10px;
     position: relative;
 }
+
 
 /* Затемнение и размытие фона */
 body::before {
@@ -212,4 +214,30 @@ p { animation: fadeIn 1s forwards 0.3s; }
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+
+/* Улучшенная адаптация */
+@media (max-width: 768px) {
+    body { padding: 5px; }
+    #about {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+    .profile-photo {
+        width: 80%;
+        height: auto;
+    }
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .skill-card {
+        width: 90%;
+    }
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
