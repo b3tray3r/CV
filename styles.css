@@ -7,27 +7,50 @@ body {
     color: white;
     text-align: center;
     margin: 0;
-    padding: 10px;
-    position: relative;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-y: auto;
 }
-
 
 /* Затемнение и размытие фона */
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
     z-index: -1;
+}
+
+/* Общий стиль для всех секций */
+section {
+    margin: 80px auto;
+    padding: 20px;
+    max-width: 1000px;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Дополнительное разделение заголовков */
+h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInTitle 1s forwards ease-in-out;
 }
 
 /* Контейнер */
 .container {
-    max-width: none;
+    max-width: 1000px;
     margin: auto;
     padding: 10px;
     position: relative;
@@ -35,23 +58,18 @@ body::before {
 }
 
 /* Заголовок и текст с анимацией */
-h1, h2, p {
+h1, p {
     opacity: 0;
     animation: fadeIn 1s forwards;
 }
 
-h1, h2 { animation-delay: 0.3s; }
+h1 { animation-delay: 0.3s; }
 p { animation-delay: 0.6s; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* Анимация появления с задержкой */
-h1, h2 { animation: fadeIn 1s forwards; }
-p { animation: fadeIn 1s forwards 0.3s; }
-.buttons { animation: fadeIn 1s forwards 0.6s; }
 
 /* Стили кнопок */
 .buttons {
@@ -60,6 +78,7 @@ p { animation: fadeIn 1s forwards 0.3s; }
     gap: 15px;
     justify-content: center;
     opacity: 0;
+    animation: fadeIn 1s forwards 2.5s;
 }
 
 .btn {
@@ -76,12 +95,12 @@ p { animation: fadeIn 1s forwards 0.3s; }
 
 .btn:hover {
     background: #0056b3;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 /* Блок "О себе" */
 #about {
-    max-width: 1000px !important;
+    max-width: 1000px;
     margin: 30px auto;
     padding: 40px;
     background: rgba(30, 30, 30, 0.8);
@@ -92,13 +111,16 @@ p { animation: fadeIn 1s forwards 0.3s; }
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
+    animation: fadeInUp 1s forwards 0.3s;
+    position: relative;
+    z-index: 2;
 }
 
 /* Фото профиля */
 .profile-photo {
-    width: 300px;
-    height: 500px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
     object-fit: cover;
     border: 4px solid white;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
@@ -112,10 +134,10 @@ p { animation: fadeIn 1s forwards 0.3s; }
 
 /* Имя и фамилия (увеличенный размер) */
 .about-text h2 {
-    font-size: 50px; /* Увеличенный размер */
+    font-size: 50px;
     text-transform: uppercase;
     font-weight: bold;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     color: #fff;
 }
 
@@ -136,12 +158,19 @@ p { animation: fadeIn 1s forwards 0.3s; }
 #skills {
     margin-top: 60px;
     text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards 0.9s;
 }
 
-/* Заголовок "Навыки" */
-#skills h2 {
-    font-size: 34px;
-    margin-bottom: 20px;
+.h2-skills {
+    animation: fadeInUp 1s forwards 0.9s;
+}
+.h2-edu {
+    animation: fadeInUp 1s forwards 1.2s;
+}
+.h2-cont {
+    animation: fadeInUp 1s forwards 1.6s;
 }
 
 /* Контейнер с карточками */
@@ -159,85 +188,112 @@ p { animation: fadeIn 1s forwards 0.3s; }
     padding: 15px;
     width: 180px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s forwards;
 }
 
-/* Появление карточек с задержкой */
-.skill-card:nth-child(1) { animation-delay: 0.2s; }
-.skill-card:nth-child(2) { animation-delay: 0.4s; }
-.skill-card:nth-child(3) { animation-delay: 0.6s; }
-.skill-card:nth-child(4) { animation-delay: 0.8s; }
-.skill-card:nth-child(5) { animation-delay: 1s; }
-
 /* Эффект наведения */
 .skill-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
 }
 
-/* Иконки */
-.skill-card span {
-    font-size: 30px;
-    display: block;
-    margin-bottom: 10px;
+/* Блок образования */
+#education {
+    margin-top: 60px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 1.5s;
 }
 
-/* Название навыка */
-.skill-card h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
+/* Контейнер для образования и курсов */
+.education-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-/* Описание навыка */
-.skill-card p {
-    font-size: 14px;
-    color: #ccc;
-}
-
-/* Адаптация для мобильных */
-@media (max-width: 768px) {
-    .skills-container {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-/* Настройка размера для картинки внизу */
-#data-image {
-    max-width: 100%;
-    width: 600px;
-    height: auto;
-    margin-top: 20px;
+/* Стили для блоков образования */
+.education-block {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    max-width: 400px;
+    text-align: left;
 }
 
 
-/* Улучшенная адаптация */
-@media (max-width: 768px) {
-    body { padding: 5px; }
-    #about {
-        flex-direction: column;
-        padding: 20px;
-        text-align: center;
+/* Текст образования */
+.education-text {
+    flex: 1;
+}
+
+/* Изображения */
+.education-img, .course-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+/* Раздел "Контакты" */
+#contacts {
+    margin-top: 60px;
+    text-align: center;
+    padding: 40px;
+    border-radius: 12px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards 2.1s;
+}
+
+/* Контейнер для ссылок */
+.contact-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Кнопки */
+.btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+
+/* Общая анимация появления */
+.animated-section{
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInSlide 1s forwards;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
     }
-    .profile-photo {
-        width: 80%;
-        height: auto;
-    }
-    .skills-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .skill-card {
-        width: 90%;
-    }
-    .buttons {
-        flex-direction: column;
-        gap: 10px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
+
+
