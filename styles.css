@@ -1,0 +1,215 @@
+/* Фон с размытой картинкой */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: url("https://analyzing-testing.netzsch.com/_Resources/Persistent/4/d/4/e/4d4ea9e36c3524300b40aa2ee2c37cf85ca4876d/NETZSCH_Data-Science_Big-Data-scaled-1847x1038-1600x899.webp") no-repeat center center/cover;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+}
+
+/* Затемнение и размытие фона */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: -1;
+}
+
+/* Контейнер */
+.container {
+    max-width: none;
+    margin: auto;
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Заголовок и текст с анимацией */
+h1, h2, p {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+h1, h2 { animation-delay: 0.3s; }
+p { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Анимация появления с задержкой */
+h1, h2 { animation: fadeIn 1s forwards; }
+p { animation: fadeIn 1s forwards 0.3s; }
+.buttons { animation: fadeIn 1s forwards 0.6s; }
+
+/* Стили кнопок */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    opacity: 0;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Блок "О себе" */
+#about {
+    max-width: 1000px !important;
+    margin: 30px auto;
+    padding: 40px;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+/* Фото профиля */
+.profile-photo {
+    width: 300px;
+    height: 500px;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Текстовый блок */
+.about-text {
+    flex: 1;
+    text-align: left;
+}
+
+/* Имя и фамилия (увеличенный размер) */
+.about-text h2 {
+    font-size: 50px; /* Увеличенный размер */
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 60px;
+    color: #fff;
+}
+
+/* Описание */
+.about-text p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+/* Анимация блока */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Навыки */
+#skills {
+    margin-top: 60px;
+    text-align: center;
+}
+
+/* Заголовок "Навыки" */
+#skills h2 {
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+/* Контейнер с карточками */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Карточка навыка */
+.skill-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+/* Появление карточек с задержкой */
+.skill-card:nth-child(1) { animation-delay: 0.2s; }
+.skill-card:nth-child(2) { animation-delay: 0.4s; }
+.skill-card:nth-child(3) { animation-delay: 0.6s; }
+.skill-card:nth-child(4) { animation-delay: 0.8s; }
+.skill-card:nth-child(5) { animation-delay: 1s; }
+
+/* Эффект наведения */
+.skill-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Иконки */
+.skill-card span {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Название навыка */
+.skill-card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* Описание навыка */
+.skill-card p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Настройка размера для картинки внизу */
+#data-image {
+    max-width: 100%;
+    width: 600px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
